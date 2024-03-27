@@ -42,7 +42,7 @@ button1 = Button(frame2, text = " ", width = 16, height = 8)
 button1.grid(row=2, column=1)
 
 button1 = Button(frame2, text = " ", width = 16, height = 8)
-button1.grid(row=2, column=2)
+button1.grid(row=2, column=3)
 
 
 root.mainloop() # This line starts the Tkinter event loop.
