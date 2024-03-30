@@ -18,12 +18,49 @@ board = {1: " ", 2: " ", 3:" ",
 
 turn = "x"
 
+
+def checkForWin(player):
+    #rows
+    if board[1] == board[2] and board[2] == board[3] and board[3] == player:
+        return True
+    
+    elif board[4] == board[5] and board[5] == board[6] and board[6] == player:
+        return True
+
+    elif board[7] == board[8] and board[8] == board[9] and board[9] == player:
+        return True
+
+    #columns
+    if board[1] == board[4] and board[4] == board[7] and board[7] == player:
+        return True
+    
+    elif board[2] == board[5] and board[5] == board[8] and board[8] == player:
+        return True
+
+    elif board[3] == board[6] and board[6] == board[9] and board[9] == player:
+        return True
+
+    #diagonals
+    elif board[1] == board[5] and board[5] == board[9] and board[9] == player:
+        return True
+
+    elif board[3] == board[5] and board[5] == board[7] and board[7] == player:
+        return True
+    return False
+
+def checkForDraw():
+    for i in board.keys():
+        if board[i] == " ":
+            return False
+
+        return True
+
 def play(event):
     global turn
     button = event.widget
     buttonText = str(button)
     clicked = buttonText[-1]
-    print(clicked)
+
     if clicked == "n":
         clicked = 1
     else:
@@ -32,11 +69,24 @@ def play(event):
     if button["text"] == " ":
         if turn == "x":
             button["text"]="X"
+            board[clicked] = turn
+            if checkForWin(turn):
+                winningLabel = Label(frame2, text=f"{turn} wins the game!", bg = "orange", font=("Arial", 25))
+                winningLabel.grid(row = 3, column=0, columnspan=3)
             turn = "o"
 
         else:
             button["text"]= "O"
+            board[clicked] = turn
+            if checkForWin(turn):
+                winningLabel = Label(frame2, text=f"{turn} wins the game!", bg="orange", font=("Arial", 25))
+                winningLabel.grid(row = 3, column=0, columnspan=3)
             turn="x"
+
+        if checkForDraw():
+            drawLabel = Label(frame2, text=f"Game Draw!", bg="orange", font=("Arial", 25))
+            drawLabel.grid(row = 3, column=0, columnspan=3)
+
 #Tic Tac Toe board
 
 #first row
@@ -77,6 +127,10 @@ button8.bind("<Button-1>", play)
 button9 = Button(frame2, text = " ", width = 4, height = 2, font=("Arial", 30), bg = "gray", relief= RAISED, borderwidth=5)
 button9.grid(row=2, column=2)
 button9.bind("<Button-1>", play)
+
+restartButton = Button(frame2, text="Restart Game!", width=12, height=1, font=("Arial",30), bg="Green", relief=RAISED, 
+borderwidth=5 )
+restartButton.grid(row=4, column=0, columnspan=3)
 
 
 root.mainloop() # This line starts the Tkinter event loop.
