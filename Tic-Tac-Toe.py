@@ -1,7 +1,7 @@
 from tkinter import *
 
 root = Tk()   #creates the main window of the application using the Tk() constructor
-root.geometry("500x500") #px
+root.geometry("320x500") #px
 root.title("Tic Tac Toe")
 frame1 = Frame(root)
 frame1.pack()
@@ -64,8 +64,10 @@ def restartGame():
     for i in board.keys():
         board[i]= " "
 
-    titleLabel = Label(frame1, text = "Tic Tac Toe", font = ("Arial", 30), bg = "orange", width=20)
+    titleLabel = Label(frame1, text = "Tic Tac Toe", font = ("Arial", 30), bg = "orange", width=15)
     titleLabel.grid(row=0, column=0)
+
+#Function to play
 
 def play(event):
     global turn, game_end
@@ -86,7 +88,7 @@ def play(event):
             button["text"]="X"
             board[clicked] = turn
             if checkForWin(turn):
-                winningLabel = Label(frame1, text=f"{turn} wins the game!", bg = "orange", font=("Arial", 30), width=20)
+                winningLabel = Label(frame1, text=f"{turn} wins the game!", bg = "orange", font=("Arial", 26), width=16)
                 winningLabel.grid(row = 0, column=0, columnspan=3)
                 game_end = True
             turn = "o"
@@ -101,7 +103,7 @@ def play(event):
             turn="x"
 
         if checkForDraw():
-            drawLabel = Label(frame1, text=f"Game Draw!", bg="orange", font=("Arial", 30), width=20)
+            drawLabel = Label(frame1, text=f"Game Draw!", bg="orange", font=("Arial", 26), width=16)
             drawLabel.grid(row = 0, column=0, columnspan=3)
 
 #Tic Tac Toe board
