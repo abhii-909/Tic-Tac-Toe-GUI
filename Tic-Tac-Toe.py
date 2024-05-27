@@ -100,9 +100,9 @@ def play(event):
                 game_end = True
             turn="x"
 
-            if checkForDraw():
-                drawLabel = Label(frame1, text=f"Game Draw!", bg="orange", font=("Arial", 30), width=20)
-                drawLabel.grid(row = 0, column=0, columnspan=3)
+        if checkForDraw():
+            drawLabel = Label(frame1, text=f"Game Draw!", bg="orange", font=("Arial", 30), width=20)
+            drawLabel.grid(row = 0, column=0, columnspan=3)
 
 #Tic Tac Toe board
 
