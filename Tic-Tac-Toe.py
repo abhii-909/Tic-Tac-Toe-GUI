@@ -6,7 +6,7 @@ root.title("Tic Tac Toe")
 frame1 = Frame(root)
 frame1.pack()
 
-titleLabel = Label(frame1, text = "Tic Tac Toe", font = ("Arial", 30), bg = "orange", width=16)
+titleLabel = Label(frame1, text = "Tic Tac Toe", font = ("Arial", 26), bg = "orange", width=16)
 titleLabel.grid(row=0, column=0)
 
 frame2 = Frame(root)
